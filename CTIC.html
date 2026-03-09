@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-[#FAFAFA] text-zinc-900 overflow-x-hidden antialiased">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTIC | Global Cyber Threat Intelligence Council</title>
+
+    <!-- Professional Enterprise Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        serif: ['Playfair Display', 'serif'], // Added for Certificate
+                    },
+                    colors: {
+                        base: '#FAFAFA',
+                        surface: '#FFFFFF',
+                        surfaceHover: '#F4F4F5',
+                        borderLight: '#E4E4E7',
+                        borderFocus: '#D4D4D8',
+                        accent: '#DC2626', // Enterprise Crimson Red
+                        accentHover: '#B91C1C',
+                        textMain: '#09090B',
+                        textMuted: '#52525B',
+                        darkAnchor: '#09090B'
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 40px -10px rgba(0,0,0,0.08)',
+                        'red-glow': '0 0 40px rgba(220, 38, 38, 0.12)',
+                        'modal': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Scrolling */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        
+        body { margin: 0; background-color: #FAFAFA; }
+        ::selection { background: #DC2626; color: #FFFFFF; }
+        ::-webkit-scrollbar { display: none; }
+
+        /* Architectural Grid Background */
+        .technical-grid {
+            position: fixed; inset: 0; background-image: radial-gradient(#D4D4D8 1px, transparent 1px);
+            background-size: 40px 40px; z-index: 0; pointer-events: none; opacity: 0.6;
+            mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
+        }
+
+        /* Decorative Intersections */
+        .crosshair { position: absolute; width: 9px; height: 9px; pointer-events: none; z-index: 10; }
+        .crosshair::before { content: ''; position: absolute; top: 4px; left: 0; width: 9px; height: 1px; background: #A1A1AA; }
+        .crosshair::after { content: ''; position: absolute; top: 0; left: 4px; width: 1px; height: 9px; background: #A1A1AA; }
+
+        /* Refined Image Styling - Cinematic & Cool */
+        .cyber-img-container { overflow: hidden; position: relative; background: #000; }
+        .cyber-img { 
+            width: 100%; height: 100%; object-fit: cover; object-position: center;
+            filter: grayscale(100%) contrast(1.1) brightness(0.85);
+            transform: scale(1.02);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: slow-breathe 20s ease-in-out infinite alternate;
+        }
+        @keyframes slow-breathe { 0% { transform: scale(1.02); } 100% { transform: scale(1.08); } }
+
+        .cyber-img-container::after {
+            content: ''; position: absolute; inset: 0; background: rgba(220, 38, 38, 0.08); 
+            transition: opacity 0.5s ease; pointer-events: none; mix-blend-mode: color-burn;
+        }
+        .cyber-img-container:hover .cyber-img { filter: grayscale(20%) contrast(1.05) brightness(0.9); }
+        .cyber-img-container:hover::after { opacity: 0; }
+
+        /* Navigation */
+        .corporate-nav {
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid #E4E4E7; transition: all 0.4s ease;
+        }
+
+        /* Tickers */
+        .threat-ticker {
+            background: #09090B; color: #DC2626; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            text-transform: uppercase; white-space: nowrap; overflow: hidden; display: flex; align-items: center; border-bottom: 1px solid #27272A;
+        }
+        .ticker-content { display: inline-block; animation: ticker 40s linear infinite; padding-left: 100%; }
+        
+        .logo-ticker-wrap { overflow: hidden; white-space: nowrap; position: relative; width: 100%; mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+        .logo-ticker { display: inline-block; animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+        /* Complex Enterprise Cards */
+        .enterprise-card {
+            background: #FFFFFF; border: 1px solid transparent; box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1); position: relative;
+        }
+        .enterprise-card::before { content: ''; position: absolute; inset: 0; border: 1px solid #E4E4E7; z-index: 1; pointer-events: none; transition: border-color 0.4s ease; }
+        .card-accent-line { position: absolute; top: 0; left: 0; width: 0%; height: 2px; background: #DC2626; transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1); z-index: 10; }
+        .enterprise-card:hover { box-shadow: var(--tw-shadow-premium); transform: translateY(-6px); }
+        .enterprise-card:hover::before { border-color: #D4D4D8; }
+        .enterprise-card:hover .card-accent-line { width: 100%; }
+
+        /* Multi-Layer Page Transition */
+        .transition-wrapper { position: fixed; inset: 0; z-index: 10000; pointer-events: none; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .transition-panel { width: 100%; height: 100%; background: #09090B; position: absolute; top: 0; left: 0; transform: scaleY(0); transform-origin: bottom; }
+        .panel-red { background: #DC2626; z-index: 1; }
+        .panel-dark { background: #09090B; z-index: 2; }
+        .transition-logo { z-index: 3; opacity: 0; transform: scale(0.95); }
+
+        /* Preloader */
+        #preloader { position: fixed; inset: 0; background: #FFFFFF; z-index: 10001; display: flex; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
+        .preloader-hidden { opacity: 0 !important; pointer-events: none !important; }
+
+        /* SPA Setup */
+        .page-view { display: none; opacity: 0; position: relative; z-index: 10; }
+        .page-view.active { display: block; opacity: 1; }
+
+        /* Typography Animation Utilities */
+        .split-line { overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+        .word { transform: translateY(115%); display: inline-block; } 
+
+        /* Form UI */
+        .form-input {
+            width: 100%; padding: 0.875rem 1rem; background: #FAFAFA; border: 1px solid #E4E4E7;
+            font-family: 'Inter', sans-serif; font-size: 0.875rem; color: #09090B; outline: none; transition: all 0.2s ease;
+        }
+        .form-input:focus { border-color: #DC2626; box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1); background: #FFFFFF; }
+        .form-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; color: #52525B; margin-bottom: 0.5rem; font-weight: 700; }
+
+        /* Modal Base */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(12px); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; }
+        .modal-container { background: #FFFFFF; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; border: 1px solid #E4E4E7; box-shadow: var(--tw-shadow-modal); position: relative; transform: translateY(40px) scale(0.95); opacity: 0; }
+        
+        /* Modal Scrollbar */
+        .modal-container::-webkit-scrollbar { display: block; width: 6px; }
+        .modal-container::-webkit-scrollbar-track { background: #FAFAFA; }
+        .modal-container::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 10px; }
+        .modal-container::-webkit-scrollbar-thumb:hover { background: #A1A1AA; }
+        
+        /* Promo Popup */
+        #promo-popup { display: none; }
+        
+        .fade-up { opacity: 0; transform: translateY(20px); }
+        .img-reveal { clip-path: inset(100% 0 0 0); }
+        .img-reveal-bg { clip-path: inset(100% 0 0 0); }
+
+        /* Ambient Features */
+        .ambient-glow { position: fixed; border-radius: 50%; filter: blur(140px); opacity: 0.08; pointer-events: none; z-index: -1; animation: float 20s ease-in-out infinite alternate; }
+        .glow-1 { width: 500px; height: 500px; background: #DC2626; top: -10%; left: -10%; }
+        .glow-2 { width: 600px; height: 600px; background: #2563EB; bottom: -20%; right: -10%; animation-delay: -5s; }
+        @keyframes float { 0% { transform: translate(0, 0); } 100% { transform: translate(80px, 80px); } }
+
+        .laser-scanner {
+            position: absolute; left: 0; width: 100%; height: 1px; background: rgba(220, 38, 38, 0.8);
+            box-shadow: 0 0 15px 2px rgba(220, 38, 38, 0.5); z-index: 30; animation: scan 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+        @keyframes scan { 0% { top: -10%; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 110%; opacity: 0; } }
+
+        /* Data Chart Lines */
+        .data-chart-line { stroke-dasharray: 100; stroke-dashoffset: 100; animation: drawChart 3s ease-out forwards infinite; }
+        @keyframes drawChart { 0% { stroke-dashoffset: 100; } 100% { stroke-dashoffset: 0; } }
+        
+        /* Landscape Certificate Design Elements */
+        .cert-border {
+            border: 16px solid #E4E4E7;
+            outline: 3px solid #09090B;
+            outline-offset: -20px;
+            background-image: radial-gradient(rgba(0,0,0,0.02) 1px, transparent 1px);
+            background-size: 20px 20px;
+            aspect-ratio: 1.414 / 1;
+            max-height: 85vh; 
+        }
+        .cert-seal {
+            position: absolute; bottom: 60px; right: 60px;
+            width: 120px; height: 120px; background: #DC2626;
+            border-radius: 50%; border: 3px dashed #FFF;
+            box-shadow: 0 0 0 5px #DC2626, 0 15px 30px rgba(220, 38, 38, 0.3);
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: center;
+            transform: rotate(-15deg);
+        }
+    </style>
+</head>
+<body class="text-zinc-900 selection:bg-accent selection:text-white">
+
+    <!-- Background Glows -->
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <div class="technical-grid"></div>
+    
+    <!-- Promo Coupon Popup (Bottom Right) -->
+    <div id="promo-popup" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-textMain text-white p-6 shadow-2xl z-50 transform translate-y-[150%] opacity-0 max-w-sm border border-zinc-800 rounded-sm">
+        <button onclick="closePromo()" class="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <div class="font-mono text-accent text-[10px] uppercase tracking-widest font-bold mb-2 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-accent rounded-full animate-pulse"></span> Special Offer
+        </div>
+        <h3 class="font-sans font-bold text-lg mb-2 leading-tight">Advance Your Career</h3>
+        <p class="font-sans text-sm text-zinc-400 mb-5 leading-relaxed">Apply today and receive <strong class="text-white">20% off</strong> your first professional certification exam registration.</p>
+        
+        <div class="flex items-center gap-2">
+            <div class="bg-zinc-800 px-4 py-2.5 font-mono text-sm tracking-widest text-white border border-zinc-700 w-full text-center select-all" id="promo-code">CTIC2026</div>
+            <button onclick="copyPromo()" id="promo-copy-btn" class="bg-accent hover:bg-accentHover text-white px-5 py-2.5 font-sans text-sm font-bold transition-colors">
+                Copy
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay px-4 md:px-0" id="login-modal">
+        <div class="modal-container" data-lenis-prevent>
+            <div class="p-6 border-b border-borderLight flex justify-between items-center bg-base sticky top-0 z-10">
+                <div>
+                    <h2 class="font-sans font-extrabold text-xl text-textMain">Candidate Login</h2>
+                    <p class="font-mono text-[10px] text-accent uppercase tracking-widest mt-1">Secure Portal Access</p>
+                </div>
+                <button onclick="closeModal('login-modal')" class="text-textMuted hover:text-accent transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <form class="space-y-5" onsubmit="event.preventDefault(); closeModal('login-modal'); navigate('dashboard');">
+                    <div><label class="form-label">Email / CTIC ID</label><input type="text" class="form-input" required placeholder="candidate@email.com"></div>
+                    <div><label class="form-label">Password</label><input type="password" class="form-input" required placeholder="••••••••"></div>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-textMain hover:bg-accent text-white font-sans font-bold py-4 transition-colors flex items-center justify-center gap-2 shadow-premium">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                            Authenticate & Enter
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay px-4 md:px-0" id="registration-modal">
+        <!-- Added data-lenis-prevent to fix scroll hijacking -->
+        <div class="modal-container" data-lenis-prevent>
+            <div class="p-6 border-b border-borderLight flex justify-between items-center bg-base sticky top-0 z-10">
+                <div>
+                    <h2 class="font-sans font-extrabold text-xl text-textMain">Exam Registration Portal</h2>
+                    <p class="font-mono text-[10px] text-accent uppercase tracking-widest mt-1">Application & Eligibility</p>
+                </div>
+                <button onclick="closeModal('registration-modal')" class="text-textMuted hover:text-accent transition-colors">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div class="p-6 space-y-6">
+                <div class="bg-red-50 border border-red-100 p-4 font-sans text-sm text-textMain flex gap-3 items-start">
+                    <svg class="w-5 h-5 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span>All exams are remotely proctored. Ensure you meet the prerequisite qualifications before registering.</span>
+                </div>
+                <form class="space-y-5" onsubmit="event.preventDefault(); closeModal('registration-modal'); navigate('exam');">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div><label class="form-label">First Name</label><input type="text" id="reg-fname" class="form-input" required placeholder="Jane"></div>
+                        <div><label class="form-label">Last Name</label><input type="text" id="reg-lname" class="form-input" required placeholder="Doe"></div>
+                    </div>
+                    <div><label class="form-label">Professional Email</label><input type="email" class="form-input" required placeholder="jane.doe@company.com"></div>
+                    <div>
+                        <label class="form-label">Select Certification Exam</label>
+                        <select class="form-input" id="reg-exam-select">
+                            <option value="Certified Security Analyst (CTIC-CSA)">CTIC-CSA: Certified Security Analyst</option>
+                            <option value="Certified Threat Intelligence (CTIC-CTI)">CTIC-CTI: Certified Threat Intelligence</option>
+                            <option value="Certified SOC Analyst (CTIC-SOC)">CTIC-SOC: Certified SOC Analyst</option>
+                            <option value="Cyber Forensics Expert (CTIC-CFE)">CTIC-CFE: Cyber Forensics Expert</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label">Years of Relevant Experience</label>
+                        <select class="form-input" required>
+                            <option value="">Select Experience Level</option>
+                            <option value="0-1">0 - 1 Years</option>
+                            <option value="1-3">1 - 3 Years</option>
+                            <option value="3-5">3 - 5 Years</option>
+                            <option value="5+">5+ Years</option>
+                        </select>
+                    </div>
+                    <div><label class="form-label">Promo / Coupon Code</label><input type="text" class="form-input font-mono uppercase" placeholder="Enter code here"></div>
+                    <div class="pt-4">
+                        <button type="submit" class="w-full bg-textMain hover:bg-accent text-white font-sans font-bold py-4 transition-colors flex items-center justify-center gap-2 shadow-premium">
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            Verify Eligibility & Enter Exam Portal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Multi-Layer Transition Overlays with Logo -->
+    <div class="transition-wrapper">
+        <div class="transition-panel panel-red"></div>
+        <div class="transition-panel panel-dark"></div>
+        <div class="transition-logo font-sans font-extrabold text-6xl tracking-tight text-white">CTIC<span class="text-accent">.</span></div>
+    </div>
+
+    <!-- 2-Second Logo Preloader -->
+    <div id="preloader">
+        <h1 class="font-sans font-extrabold text-7xl md:text-8xl tracking-tight text-textMain relative z-10" id="preloader-logo">
+            CTIC<span class="text-accent">.</span>
+        </h1>
+    </div>
+
+    <!-- Live Threat Ticker -->
+    <div class="threat-ticker py-1.5 fixed top-0 w-full z-50" id="global-ticker">
+        <div class="ticker-content">
+            <span class="text-white">LIVE INTEL:</span> APT-29 ACTIVITY DETECTED IN EMEA FINANCIAL SECTOR /// <span class="text-white">CVE-2026-1098:</span> CRITICAL ZERO-DAY PATCH ISSUED FOR BORDER GATEWAYS /// <span class="text-white">CTIC ADVISORY:</span> RANSOMWARE-AS-A-SERVICE UP 44% Q1 /// <span class="text-white">EXAM UPDATE:</span> CTI-301 BLUEPRINT REVISED FOR Q3.
+        </div>
+    </div>
+
+    <!-- Normal Words Navigation -->
+    <nav class="fixed top-[26px] w-full z-40 corporate-nav" id="main-nav" style="transform: translateY(-100%);">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 relative">
+            <div class="crosshair -bottom-[5px] left-0"></div>
+            <div class="crosshair -bottom-[5px] right-0"></div>
+
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group" onclick="navigate('home')">
+                    <div class="w-8 h-8 bg-textMain flex items-center justify-center relative overflow-hidden shadow-sm">
+                        <div class="absolute inset-0 bg-accent transform translate-y-full group-hover:translate-y-0 transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1)"></div>
+                        <svg class="relative z-10" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="#FFFFFF" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="font-sans font-bold text-xl tracking-tight uppercase text-textMain hidden md:block">CTIC<span class="text-accent">.</span></span>
+                </div>
+                
+                <!-- Desktop Menu (Normal Words) -->
+                <div class="hidden lg:flex items-center space-x-10">
+                    <button onclick="navigate('home')" class="font-sans text-sm font-semibold text-textMuted hover:text-textMain transition-colors">Home</button>
+                    <button onclick="navigate('certifications')" class="font-sans text-sm font-semibold text-textMuted hover:text-textMain transition-colors">Certifications</button>
+                    <button onclick="navigate('pillars')" class="font-sans text-sm font-semibold text-textMuted hover:text-textMain transition-colors">Our Pillars</button>
+                    <button onclick="navigate('intelligence')" class="font-sans text-sm font-semibold text-textMuted hover:text-textMain transition-colors">Resources</button>
+                </div>
+
+                <!-- Action / Meta -->
+                <div class="flex items-center gap-4 md:gap-6">
+                    <button onclick="openModal('login-modal')" class="font-mono text-[10px] md:text-xs font-bold text-textMain hover:text-accent transition-colors flex items-center gap-2 hidden sm:flex uppercase tracking-widest">
+                        Login
+                    </button>
+                    <div class="w-px h-6 bg-borderLight hidden sm:block"></div>
+                    <button onclick="openModal('registration-modal')" class="bg-textMain text-white text-xs md:text-sm font-sans font-bold px-4 md:px-6 py-2.5 hover:bg-accent transition-colors shadow-premium whitespace-nowrap">
+                        Exam Portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content App Root -->
+    <main id="app-root" class="relative z-10 pt-20">
+
+        <!-- ==================== PAGE: HOME ==================== -->
+        <div id="page-home" class="page-view active">
+
+            <!-- Hero Section exactly matching requested design -->
+            <section class="min-h-[85vh] flex items-center justify-center relative bg-surface overflow-hidden pt-10">
+                <div class="absolute right-[-10%] top-[10%] w-[900px] h-[900px] opacity-100 pointer-events-none hero-graphic z-0">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <g class="spin-slow" style="transform-origin: center; animation: spin 120s linear infinite;">
+                            <circle cx="50" cy="50" r="48" fill="none" stroke="#E4E4E7" stroke-width="0.3" stroke-dasharray="1 4"/>
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="#D4D4D8" stroke-width="0.1"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 w-full relative z-10 flex flex-col lg:flex-row items-center gap-12">
+                    <div class="w-full lg:w-1/2 pr-0 lg:pr-4">
+                        <div class="flex items-center gap-4 mb-6 mask-reveal hero-sub">
+                            <div class="h-[2px] w-8 bg-accent line-expand" style="transform: scaleX(0); transform-origin: left;"></div>
+                            <span class="font-mono text-[10px] font-bold text-accent uppercase tracking-[0.2em]">International Standard Auth.</span>
+                        </div>
+
+                        <h1 class="font-sans font-extrabold text-5xl md:text-[5.5rem] leading-[1.05] tracking-tight text-textMain mb-6 hero-title text-mask">
+                            Master the Art of <br>
+                            <span class="text-zinc-400 font-normal">Cyber <br> Intelligence.</span>
+                        </h1>
+                        
+                        <div class="mask-reveal">
+                            <p class="font-sans text-lg md:text-xl text-textMuted leading-relaxed mb-8 hero-desc font-medium max-w-lg">
+                                CTIC provides the world's most rigorous, performance-based credentialing for threat intelligence analysts, forensic experts, and security operators.
+                            </p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 mask-reveal hero-btns">
+                            <button onclick="navigate('certifications')" class="bg-textMain hover:bg-accent text-white px-8 py-4 font-sans font-bold transition-all flex items-center justify-center gap-3 group shadow-premium text-sm">
+                                Explore Certifications
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transform group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Hero Image with Red Crafty Border Offset -->
+                    <div class="w-full lg:w-1/2 hidden lg:block relative group mt-8 lg:mt-0 pl-4 lg:pl-12">
+                        <!-- Red crafty border background layer -->
+                        <div class="absolute inset-0 border-2 border-accent transform translate-x-2 translate-y-6 z-0 img-reveal-bg"></div>
+                        
+                        <div class="relative w-full aspect-[4/3] p-1 bg-white border border-borderLight shadow-2xl img-reveal transform transition-transform duration-700 ease-out z-10">
+                            <div class="crosshair -top-[5px] -left-[5px]"></div><div class="crosshair -top-[5px] -right-[5px]"></div>
+                            <div class="crosshair -bottom-[5px] -left-[5px]"></div><div class="crosshair -bottom-[5px] -right-[5px]"></div>
+                            
+                            <div class="cyber-img-container h-full w-full relative">
+                                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=2069" alt="Cyber Security Operations" class="cyber-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trusted By / Enterprise Banner with Stats -->
+            <div class="border-y border-borderLight bg-white pt-8">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center gap-8 mb-8">
+                    <div class="font-mono text-xs text-zinc-400 uppercase tracking-widest font-bold whitespace-nowrap">Trusted By Global Operators</div>
+                    <div class="w-px h-6 bg-borderLight hidden md:block"></div>
+                    <div class="logo-ticker-wrap">
+                        <div class="logo-ticker flex items-center gap-16 font-sans font-bold text-xl text-zinc-300">
+                            <span>MANDIANT</span><span>CROWDSTRIKE</span><span>PALO ALTO</span><span>FORTINET</span><span>FIREEYE</span><span>DEFENSE DEPT</span>
+                            <!-- Duplicate for seamless loop -->
+                            <span>MANDIANT</span><span>CROWDSTRIKE</span><span>PALO ALTO</span><span>FORTINET</span><span>FIREEYE</span><span>DEFENSE DEPT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats Section Restored to exact specifications -->
+                <div class="border-t border-borderLight bg-white relative">
+                    <div class="absolute left-1/4 top-0 bottom-0 w-px bg-borderLight hidden md:block"></div>
+                    <div class="absolute left-2/4 top-0 bottom-0 w-px bg-borderLight hidden md:block"></div>
+                    <div class="absolute left-3/4 top-0 bottom-0 w-px bg-borderLight hidden md:block"></div>
+
+                    <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 py-10 relative z-10">
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
+                            <div class="data-stat md:pr-8">
+                                <div class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest mb-2 font-bold stat-label">Average Salary Bump</div>
+                                <div class="font-sans font-bold text-textMain text-3xl stat-value flex items-center gap-3">
+                                    +22%
+                                    <svg class="w-12 h-5 text-green-500 hidden lg:block" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 50 20" preserveAspectRatio="none"><path class="data-chart-line" d="M0 20 L 10 15 L 20 18 L 30 5 L 40 10 L 50 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div class="font-sans text-xs text-textMuted mt-2">Post-certification average</div>
+                            </div>
+                            <div class="data-stat md:px-8">
+                                <div class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest mb-2 font-bold stat-label">Global Recognition</div>
+                                <div class="font-sans font-bold text-textMain text-3xl stat-value flex items-center gap-3">
+                                    140+
+                                    <svg class="w-12 h-5 text-accent hidden lg:block" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 50 20" preserveAspectRatio="none"><path class="data-chart-line" d="M0 15 L 15 10 L 25 12 L 35 5 L 50 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </div>
+                                <div class="font-sans text-xs text-textMuted mt-2">Countries accepting CTIC</div>
+                            </div>
+                            <div class="data-stat md:px-8">
+                                <div class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest mb-2 font-bold stat-label">Exam Format</div>
+                                <div class="font-sans font-bold text-textMain text-3xl stat-value">Live</div>
+                                <div class="font-sans text-xs text-textMuted mt-2">Proctored & Practical</div>
+                            </div>
+                            <div class="data-stat md:pl-8">
+                                <div class="font-mono text-[10px] text-zinc-400 uppercase tracking-widest mb-2 font-bold stat-label">Registry Status</div>
+                                <div class="font-sans font-bold text-accent flex items-center gap-2 text-3xl stat-value">
+                                    <span class="w-3 h-3 rounded-full bg-accent animate-pulse"></span>
+                                    Verified
+                                </div>
+                                <div class="font-sans text-xs text-textMuted mt-2">Instant cryptographic check</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enterprise Solutions with Circuit Board / Matrix image moved down -->
+            <section class="py-32 relative bg-base border-b border-borderLight">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                        <div class="text-mask">
+                            <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-widest mb-4 section-sub">Corporate & Government</div>
+                            <h2 class="font-sans font-extrabold text-4xl md:text-5xl text-textMain tracking-tight mb-6 section-title">Enterprise Workforce Readiness.</h2>
+                            <p class="font-sans text-textMuted text-lg leading-relaxed font-medium mb-8 section-desc max-w-xl">
+                                We partner with Fortune 500 enterprises and defense agencies to baseline their security operations centers. Assess, train, and certify your entire cyber workforce through our managed enterprise portal.
+                            </p>
+                            <div class="font-sans text-sm text-textMain font-bold mb-8 section-desc">
+                                Bulk Exam Vouchers & Management • Custom Cyber Range Scenarios • Team Readiness Analytics Dashboard
+                            </div>
+                            <button onclick="alert('Contacting Enterprise Sales...')" class="bg-white border border-borderLight hover:border-accent text-textMain px-8 py-4 font-sans font-bold transition-colors shadow-sm section-desc">Contact Enterprise Sales</button>
+                        </div>
+                        <div class="relative h-[400px] md:h-[500px] w-full p-2 bg-white border border-borderLight shadow-xl img-reveal">
+                            <div class="cyber-img-container h-full w-full">
+                                <!-- Restored Matrix/Circuit Board Image -->
+                                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=2070" alt="Enterprise Corporate Matrix" class="cyber-img object-center">
+                            </div>
+                            <div class="absolute top-8 right-8 bg-textMain text-white p-4 shadow-modal max-w-[200px] text-center z-10">
+                                <div class="font-mono text-[10px] text-zinc-400 mb-1 uppercase tracking-widest">Team Readiness</div>
+                                <div class="font-sans font-extrabold text-4xl text-accent">92%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Who We Are -->
+            <section class="py-24 relative bg-white border-b border-borderLight">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 text-center max-w-4xl">
+                    <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-widest mb-4 section-sub">Who We Are</div>
+                    <h2 class="font-sans font-extrabold text-4xl md:text-5xl text-textMain tracking-tight mb-8 section-title text-mask">An International Council for Cyber Intelligence Excellence.</h2>
+                    <p class="font-sans text-textMuted text-lg leading-relaxed font-medium mb-10 section-desc mask-reveal">
+                        The Cyber Threat Intelligence Council (CTIC) is a global professional body focused on advancing the discipline of cyber threat intelligence and security operations. We operate at the intersection of intelligence methodology, operational security practice, forensic investigation standards, and professional competency validation.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Section: Vision & Governance aligned fix -->
+            <section class="py-24 relative bg-surface">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        
+                        <!-- Vision Box -->
+                        <div class="bg-base border border-borderLight p-10 md:p-16 relative">
+                            <div class="crosshair -top-[5px] -left-[5px]"></div><div class="crosshair -top-[5px] -right-[5px]"></div>
+                            <div class="crosshair -bottom-[5px] -left-[5px]"></div><div class="crosshair -bottom-[5px] -right-[5px]"></div>
+                            
+                            <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-widest mb-4">Our Vision</div>
+                            <h3 class="font-sans font-extrabold text-3xl md:text-4xl text-textMain tracking-tight mb-6">A More Structured Global Cyber Defense Community</h3>
+                            <p class="font-sans text-sm text-textMuted leading-relaxed font-medium mb-8">We envision a global cybersecurity ecosystem where:</p>
+                            
+                            <ul class="space-y-4 font-sans text-sm text-textMain font-semibold mb-8">
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-accent mt-1.5 flex-shrink-0"></span> <span>Intelligence professionals operate under defined ethical standards</span></li>
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-accent mt-1.5 flex-shrink-0"></span> <span>Competency is measured against structured benchmarks</span></li>
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-accent mt-1.5 flex-shrink-0"></span> <span>Institutions align with globally recognized frameworks</span></li>
+                                <li class="flex items-start gap-3"><span class="w-1.5 h-1.5 bg-accent mt-1.5 flex-shrink-0"></span> <span>Cyber defense decisions are evidence-based and intelligence-driven</span></li>
+                            </ul>
+                            <div class="p-4 bg-white border border-borderLight font-sans text-sm text-textMuted">
+                                CTIC seeks to contribute to this ecosystem through governance, research, and professional development initiatives.
+                            </div>
+                        </div>
+
+                        <!-- Governance Box -->
+                        <div class="bg-textMain text-white border border-zinc-800 p-10 md:p-16 relative shadow-2xl">
+                            <div class="absolute inset-0 bg-accent/5 pointer-events-none"></div>
+                            <div class="font-mono text-[10px] font-bold text-accent uppercase tracking-widest mb-4 relative z-10">Governance & Integrity</div>
+                            <h3 class="font-sans font-extrabold text-3xl md:text-4xl text-white tracking-tight mb-6 relative z-10">Built on Accountability and Transparency</h3>
+                            <p class="font-sans text-sm text-zinc-400 leading-relaxed font-medium mb-8 relative z-10">CTIC maintains a governance-driven structure designed to ensure:</p>
+                            
+                            <ul class="space-y-4 font-sans text-sm text-white font-medium mb-8 relative z-10">
+                                <li class="flex items-start gap-3 border-b border-zinc-800 pb-3"><svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>Independent oversight</span></li>
+                                <li class="flex items-start gap-3 border-b border-zinc-800 pb-3"><svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>Examination integrity</span></li>
+                                <li class="flex items-start gap-3 border-b border-zinc-800 pb-3"><svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>Ethical compliance</span></li>
+                                <li class="flex items-start gap-3 border-b border-zinc-800 pb-3"><svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>Responsible data handling</span></li>
+                                <li class="flex items-start gap-3"><svg class="w-4 h-4 text-accent flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span>Professional accountability</span></li>
+                            </ul>
+                            <div class="font-sans text-xs text-zinc-500 relative z-10">
+                                Our operations are guided by defined policies and structured review mechanisms to maintain credibility and trust.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PAGE: OUR PILLARS ==================== -->
+        <div id="page-pillars" class="page-view">
+            <section class="pt-32 pb-20 border-b border-borderLight bg-surface relative overflow-hidden">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+                    <div class="mask-reveal">
+                        <div class="font-mono text-[11px] font-bold text-accent uppercase tracking-[0.25em] mb-4">Our Foundation</div>
+                    </div>
+                    <div class="text-mask">
+                        <h1 class="font-sans font-extrabold text-5xl md:text-6xl tracking-tight text-textMain mb-6 pil-title">Four Strategic Pillars of CTIC</h1>
+                    </div>
+                    <div class="mask-reveal">
+                        <p class="font-sans text-lg text-textMuted max-w-2xl mx-auto font-medium pil-desc">
+                            Building a resilient framework for global cybersecurity operations through standards, certification, research, and collaboration.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Our Strategic Pillars Content -->
+            <section class="py-24 relative bg-base">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="enterprise-card p-10 pil-card opacity-0 transform translate-y-8">
+                            <div class="card-accent-line"></div>
+                            <div class="font-mono text-accent text-sm font-bold mb-4">PILLAR 1</div>
+                            <h3 class="font-sans font-extrabold text-2xl text-textMain mb-3 card-title">Standards & Framework Development</h3>
+                            <p class="font-sans text-sm text-textMuted leading-relaxed font-medium mb-6">We contribute to the development of structured frameworks that guide threat intelligence lifecycle management, operational security processes, and forensic methodologies. These frameworks define:</p>
+                            <ul class="space-y-2 font-sans text-xs text-textMain font-semibold">
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Professional role expectations</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Domain weightage and competencies</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Ethical standards of practice</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Continuing education pathways</span></li>
+                            </ul>
+                        </div>
+                        <div class="enterprise-card p-10 pil-card opacity-0 transform translate-y-8">
+                            <div class="card-accent-line"></div>
+                            <div class="font-mono text-accent text-sm font-bold mb-4">PILLAR 2</div>
+                            <h3 class="font-sans font-extrabold text-2xl text-textMain mb-3 card-title">Professional Certification</h3>
+                            <p class="font-sans text-sm text-textMuted leading-relaxed font-medium mb-6">CTIC offers performance-based certifications that validate professional competency. Certification is one component of our broader mission to formalize professional standards within the industry. Our programs are:</p>
+                            <ul class="space-y-2 font-sans text-xs text-textMain font-semibold">
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Vendor-neutral</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Blueprint-driven</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Governance-reviewed</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Designed to assess applied competence</span></li>
+                            </ul>
+                        </div>
+                        <div class="enterprise-card p-10 pil-card opacity-0 transform translate-y-8">
+                            <div class="card-accent-line"></div>
+                            <div class="font-mono text-accent text-sm font-bold mb-4">PILLAR 3</div>
+                            <h3 class="font-sans font-extrabold text-2xl text-textMain mb-3 card-title">Research & Publications</h3>
+                            <p class="font-sans text-sm text-textMuted leading-relaxed font-medium mb-6">We publish threat briefings, whitepapers, analytical reports, and industry insights to promote knowledge exchange and evidence-based practices. CTIC supports:</p>
+                            <ul class="space-y-2 font-sans text-xs text-textMain font-semibold">
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Whitepapers</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Analytical publications</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Threat landscape reports</span></li>
+                                <li class="flex items-start gap-2"><span class="w-1 h-1 bg-accent mt-1.5 flex-shrink-0"></span> <span>Academic collaboration initiatives</span></li>
+                            </ul>
+                        </div>
+                        <div class="enterprise-card p-10 pil-card opacity-0 transform translate-y-8 bg-surfaceHover border-dashed border-borderFocus flex flex-col justify-center text-center items-center">
+                            <div class="w-16 h-16 bg-white border border-borderLight flex items-center justify-center rounded-full mb-6 text-accent">
+                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <div class="font-mono text-accent text-sm font-bold mb-2">PILLAR 4</div>
+                            <h3 class="font-sans font-extrabold text-2xl text-textMain mb-4 card-title">Global Collaboration</h3>
+                            <p class="font-sans text-sm text-textMuted leading-relaxed font-medium max-w-sm">CTIC engages with academic institutions, enterprises, and cybersecurity professionals worldwide to foster collaboration and shared intelligence development.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PAGE: CERTIFICATIONS ==================== -->
+        <div id="page-certifications" class="page-view">
+            
+            <section class="pt-24 pb-20 border-b border-borderLight bg-surface relative overflow-hidden">
+                <div class="absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-red-50 to-transparent pointer-events-none opacity-50"></div>
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div class="mask-reveal pg-header">
+                        <div class="font-mono text-[11px] font-bold text-accent uppercase tracking-[0.25em] mb-4">Examination Catalog</div>
+                    </div>
+                    <div class="text-mask">
+                        <h1 class="font-sans font-extrabold text-5xl md:text-6xl tracking-tight text-textMain mb-6 pg-title">Professional Credentials</h1>
+                    </div>
+                    <div class="mask-reveal">
+                        <p class="font-sans text-lg md:text-xl text-textMuted max-w-3xl leading-relaxed font-medium pg-desc">
+                            Select an examination track below to view qualifications, download the blueprint, and register for a proctored session.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-24 max-w-screen-2xl mx-auto px-6 lg:px-8 bg-base">
+                <div class="space-y-12">
+                    <!-- CSA Card -->
+                    <div class="enterprise-card p-0 flex flex-col lg:flex-row catalog-card opacity-0 transform translate-y-8 overflow-hidden">
+                        <div class="card-accent-line"></div>
+                        <div class="lg:w-1/4 relative hidden lg:block border-r border-borderLight cyber-img-container">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000" alt="Architecture" class="cyber-img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <div class="font-mono text-white text-xs font-bold tracking-widest">DEFENSE ARCHITECTURE</div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 bg-surface border-b lg:border-b-0 lg:border-r border-borderLight p-8 relative flex flex-col">
+                            <div class="font-mono text-xs font-bold text-zinc-400 mb-2">EXAM CODE: CSA-201</div>
+                            <h2 class="font-sans font-extrabold text-3xl text-textMain mb-4 tracking-tight">Certified Security Analyst</h2>
+                            <p class="font-sans text-sm text-textMuted font-medium mb-6">Analyze architectures, identify vulnerabilities, and implement robust protective measures against active threats.</p>
+                            <div class="mt-auto">
+                                <button onclick="openModal('registration-modal')" class="w-full bg-textMain text-white font-sans font-bold py-3 hover:bg-accent transition-colors mb-3">Apply for Exam</button>
+                                <button onclick="alert('Downloading CSA-201 Blueprint PDF...')" class="w-full border border-borderLight text-textMain font-sans font-bold py-3 hover:bg-base transition-colors">Download Blueprint</button>
+                            </div>
+                        </div>
+                        <div class="lg:w-5/12 p-8 flex flex-col justify-center bg-base">
+                            <h3 class="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6 border-b border-borderLight pb-2">Examination & Qualifications</h3>
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Format</div><div class="font-sans font-bold text-textMain text-sm">100 MCQ (120 Minutes)</div></div>
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Experience Level</div><div class="font-sans font-bold text-textMain text-sm">1+ Year Recommended</div></div>
+                                <div class="col-span-2"><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Prerequisites</div><div class="font-sans font-bold text-textMain text-sm">Foundational IT Knowledge</div></div>
+                            </div>
+                            <div class="bg-surface p-4 border border-borderLight">
+                                <h4 class="font-sans font-bold text-sm text-textMain mb-2">Core Domains:</h4>
+                                <ul class="font-sans text-sm text-textMuted grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Threat Modeling</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Vulnerability Scans</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Perimeter Defense</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Access Controls</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTI Card -->
+                    <div class="enterprise-card p-0 flex flex-col lg:flex-row catalog-card opacity-0 transform translate-y-8 overflow-hidden">
+                        <div class="card-accent-line"></div>
+                        <div class="lg:w-1/4 relative hidden lg:block border-r border-borderLight cyber-img-container">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Global Data" class="cyber-img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <div class="font-mono text-white text-xs font-bold tracking-widest">PREDICTIVE INTEL</div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 bg-surface border-b lg:border-b-0 lg:border-r border-borderLight p-8 relative flex flex-col">
+                            <div class="font-mono text-xs font-bold text-zinc-400 mb-2">EXAM CODE: CTI-301</div>
+                            <h2 class="font-sans font-extrabold text-3xl text-textMain mb-4 tracking-tight">Certified Threat Intelligence</h2>
+                            <p class="font-sans text-sm text-textMuted font-medium mb-6">Track advanced persistent threats (APTs). Gather, process, and leverage intelligence to predict and prevent cyber attacks.</p>
+                            <div class="mt-auto">
+                                <button onclick="openModal('registration-modal')" class="w-full bg-textMain text-white font-sans font-bold py-3 hover:bg-accent transition-colors mb-3">Apply for Exam</button>
+                                <button onclick="alert('Downloading CTI-301 Blueprint PDF...')" class="w-full border border-borderLight text-textMain font-sans font-bold py-3 hover:bg-base transition-colors">Download Blueprint</button>
+                            </div>
+                        </div>
+                        <div class="lg:w-5/12 p-8 flex flex-col justify-center bg-base">
+                            <h3 class="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6 border-b border-borderLight pb-2">Examination & Qualifications</h3>
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Format</div><div class="font-sans font-bold text-textMain text-sm">120 MCQ (150 Minutes)</div></div>
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Experience Level</div><div class="font-sans font-bold text-textMain text-sm">2+ Years Recommended</div></div>
+                                <div class="col-span-2"><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Prerequisites</div><div class="font-sans font-bold text-textMain text-sm">Security Fundamentals (e.g., CSA or equivalent)</div></div>
+                            </div>
+                            <div class="bg-surface p-4 border border-borderLight">
+                                <h4 class="font-sans font-bold text-sm text-textMain mb-2">Core Domains:</h4>
+                                <ul class="font-sans text-sm text-textMuted grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> OSINT Gathering</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> APT Attribution</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Diamond Model</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Dark Web Analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SOC Card -->
+                    <div class="enterprise-card p-0 flex flex-col lg:flex-row catalog-card opacity-0 transform translate-y-8 overflow-hidden">
+                        <div class="card-accent-line"></div>
+                        <div class="lg:w-1/4 relative hidden lg:block border-r border-borderLight cyber-img-container">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1000" alt="SOC Operators" class="cyber-img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
+                                <div class="font-mono text-white text-xs font-bold tracking-widest">TACTICAL OPERATIONS</div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 bg-surface border-b lg:border-b-0 lg:border-r border-borderLight p-8 relative flex flex-col">
+                            <div class="font-mono text-xs font-bold text-zinc-400 mb-2">EXAM CODE: SOC-401</div>
+                            <h2 class="font-sans font-extrabold text-3xl text-textMain mb-4 tracking-tight">Certified SOC Analyst</h2>
+                            <p class="font-sans text-sm text-textMuted font-medium mb-6">Designed for frontline defenders. Acquire the technical proficiency required to operate within a Security Operations Center.</p>
+                            <div class="mt-auto">
+                                <button onclick="openModal('registration-modal')" class="w-full bg-textMain text-white font-sans font-bold py-3 hover:bg-accent transition-colors mb-3">Apply for Exam</button>
+                                <button onclick="alert('Downloading SOC-401 Blueprint PDF...')" class="w-full border border-borderLight text-textMain font-sans font-bold py-3 hover:bg-base transition-colors">Download Blueprint</button>
+                            </div>
+                        </div>
+                        <div class="lg:w-5/12 p-8 flex flex-col justify-center bg-base">
+                            <h3 class="font-mono text-xs font-bold text-zinc-500 uppercase tracking-widest mb-6 border-b border-borderLight pb-2">Examination & Qualifications</h3>
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Format</div><div class="font-sans font-bold text-textMain text-sm">Prac + 60 MCQ (180 Min)</div></div>
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Experience Level</div><div class="font-sans font-bold text-textMain text-sm">2+ Years Recommended</div></div>
+                                <div class="col-span-2"><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Prerequisites</div><div class="font-sans font-bold text-textMain text-sm">Network Security Knowledge</div></div>
+                            </div>
+                            <div class="bg-surface p-4 border border-borderLight">
+                                <h4 class="font-sans font-bold text-sm text-textMain mb-2">Core Domains:</h4>
+                                <ul class="font-sans text-sm text-textMuted grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> SIEM Analysis</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Incident Triage</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Threat Hunting</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Playbook Exec</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CFE Card (Elite) -->
+                    <div class="enterprise-card p-0 flex flex-col lg:flex-row catalog-card opacity-0 transform translate-y-8 overflow-hidden border-accent/30 shadow-red-glow">
+                        <div class="card-accent-line" style="width:100%;"></div>
+                        <div class="lg:w-1/4 relative hidden lg:block border-r border-red-200 cyber-img-container">
+                            <img src="https://images.unsplash.com/photo-1618060932014-4deda4932554?auto=format&fit=crop&q=80&w=1000" alt="Forensics Data" class="cyber-img">
+                            <div class="absolute inset-0 bg-gradient-to-t from-red-900/90 to-transparent flex items-end p-6 mix-blend-multiply"></div>
+                            <div class="absolute inset-0 flex items-end p-6 z-10">
+                                <div class="font-mono text-white text-xs font-bold tracking-widest">DIGITAL FORENSICS</div>
+                            </div>
+                        </div>
+                        <div class="lg:w-1/3 bg-red-50/30 border-b lg:border-b-0 lg:border-r border-borderLight p-8 relative flex flex-col">
+                            <div class="absolute inset-0 bg-red-50/50 pointer-events-none"></div>
+                            <div class="font-mono text-xs font-bold text-accent mb-2 relative z-10">EXAM CODE: CFE-500</div>
+                            <h2 class="font-sans font-extrabold text-3xl text-textMain mb-4 tracking-tight relative z-10">Cyber Forensics Expert</h2>
+                            <p class="font-sans text-sm text-textMuted font-medium mb-6 relative z-10">Advanced capabilities in digital evidence recovery, malware analysis, and network forensics to trace threat actors.</p>
+                            <div class="mt-auto relative z-10">
+                                <button onclick="openModal('registration-modal')" class="w-full bg-accent text-white font-sans font-bold py-3 hover:bg-accentHover transition-colors mb-3">Apply for Exam</button>
+                                <button onclick="alert('Downloading CFE-500 Blueprint PDF...')" class="w-full bg-white border border-borderLight text-textMain font-sans font-bold py-3 hover:bg-base transition-colors">Download Blueprint</button>
+                            </div>
+                        </div>
+                        <div class="lg:w-5/12 p-8 flex flex-col justify-center bg-base relative z-10">
+                            <h3 class="font-mono text-xs font-bold text-accent uppercase tracking-widest mb-6 border-b border-red-200 pb-2">Examination & Qualifications (Elite Tier)</h3>
+                            <div class="grid grid-cols-2 gap-6 mb-8">
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Format</div><div class="font-sans font-bold text-textMain text-sm">100% Practical (240 Min)</div></div>
+                                <div><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Experience Level</div><div class="font-sans font-bold text-textMain text-sm">4+ Years Recommended</div></div>
+                                <div class="col-span-2"><div class="font-mono text-[10px] text-zinc-400 uppercase mb-1">Prerequisites</div><div class="font-sans font-bold text-textMain text-sm">Advanced SOC or CTI Experience</div></div>
+                            </div>
+                            <div class="bg-white p-4 border border-red-100 shadow-sm">
+                                <h4 class="font-sans font-bold text-sm text-textMain mb-2">Core Domains:</h4>
+                                <ul class="font-sans text-sm text-textMuted grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Reverse Engineering</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Memory Forensics</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Chain of Custody Law</li>
+                                    <li class="flex items-center gap-2"><span class="w-1 h-1 bg-accent"></span> Packet Analysis</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PAGE: INTELLIGENCE HUB ==================== -->
+        <div id="page-intelligence" class="page-view">
+            <section class="pt-32 pb-10 border-b border-borderLight bg-surface relative overflow-hidden">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div class="mask-reveal res-header-el">
+                        <div class="font-mono text-[11px] font-bold text-accent uppercase tracking-[0.25em] mb-4">Resource Center</div>
+                    </div>
+                    <div class="text-mask">
+                        <h1 class="font-sans font-extrabold text-4xl md:text-5xl tracking-tight text-textMain mb-6 res-title">Intelligence Hub.</h1>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 max-w-screen-2xl mx-auto px-6 lg:px-8 bg-base">
+                <!-- Filters -->
+                <div class="flex flex-wrap gap-4 mb-12 res-card opacity-0 transform translate-y-4 border-b border-borderLight pb-6">
+                    <button class="px-5 py-2 bg-textMain text-white font-sans text-xs font-bold uppercase tracking-wider">All Intel</button>
+                    <button class="px-5 py-2 bg-white border border-borderLight hover:border-textMain text-textMain font-sans text-xs font-bold uppercase tracking-wider transition-colors">Whitepapers</button>
+                    <button class="px-5 py-2 bg-white border border-borderLight hover:border-textMain text-textMain font-sans text-xs font-bold uppercase tracking-wider transition-colors">Webinars</button>
+                    <button class="px-5 py-2 bg-white border border-borderLight hover:border-textMain text-textMain font-sans text-xs font-bold uppercase tracking-wider transition-colors">Threat Briefs</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <div class="enterprise-card res-card opacity-0 transform translate-y-8 flex flex-col overflow-hidden group">
+                        <div class="h-48 w-full cyber-img-container border-b border-borderLight">
+                            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" alt="Code Matrix" class="cyber-img">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="font-mono text-[10px] text-accent font-bold uppercase tracking-widest mb-3">Whitepaper</div>
+                            <h3 class="font-sans font-bold text-xl text-textMain mb-3 line-clamp-2 group-hover:text-accent transition-colors">The Evolution of Ransomware-as-a-Service in Q1 2026</h3>
+                            <p class="font-sans text-sm text-textMuted mb-6 line-clamp-3">A deep dive analysis by CTIC Research into the shifting economic models of major ransomware syndicates targeting healthcare.</p>
+                            <div class="mt-auto pt-4 border-t border-borderLight flex justify-between items-center">
+                                <span class="font-mono text-[10px] text-zinc-400">PDF • 24 Pages</span>
+                                <button class="font-sans text-xs font-bold text-textMain hover:text-accent transition-colors">Download</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article 2 -->
+                    <div class="enterprise-card res-card opacity-0 transform translate-y-8 flex flex-col overflow-hidden group bg-surfaceHover">
+                        <div class="h-48 w-full cyber-img-container border-b border-borderLight">
+                            <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800" alt="Legacy Tech" class="cyber-img">
+                            <div class="absolute top-4 right-4 bg-accent text-white font-mono text-[10px] px-2 py-1 z-20">LIVE EVENT</div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="font-mono text-[10px] text-zinc-500 font-bold uppercase tracking-widest mb-3">Webinar</div>
+                            <h3 class="font-sans font-bold text-xl text-textMain mb-3 line-clamp-2 group-hover:text-accent transition-colors">Architecting Zero Trust for Legacy OT Environments</h3>
+                            <p class="font-sans text-sm text-textMuted mb-6 line-clamp-3">Join lead CTIC engineers as they discuss bridging the gap between modern zero-trust principles and fragile operational tech.</p>
+                            <div class="mt-auto pt-4 border-t border-borderLight flex justify-between items-center">
+                                <span class="font-mono text-[10px] text-zinc-400">Mar 15, 2026 • 14:00 UTC</span>
+                                <button class="font-sans text-xs font-bold text-accent hover:text-accentHover transition-colors">Register</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Article 3 -->
+                    <div class="enterprise-card res-card opacity-0 transform translate-y-8 flex flex-col overflow-hidden group">
+                        <div class="h-48 w-full cyber-img-container border-b border-borderLight">
+                            <img src="https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800" alt="Red Server" class="cyber-img">
+                        </div>
+                        <div class="p-6 flex flex-col flex-1">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                                <div class="font-mono text-[10px] text-accent font-bold uppercase tracking-widest">Threat Brief</div>
+                            </div>
+                            <h3 class="font-sans font-bold text-xl text-textMain mb-3 line-clamp-2 group-hover:text-accent transition-colors">Analysis of CVE-2026-1098 Exploitation Tactics</h3>
+                            <p class="font-sans text-sm text-textMuted mb-6 line-clamp-3">Technical breakdown of the recently disclosed border gateway vulnerability currently being actively exploited in the wild.</p>
+                            <div class="mt-auto pt-4 border-t border-borderLight flex justify-between items-center">
+                                <span class="font-mono text-[10px] text-zinc-400">Restricted to Members</span>
+                                <button class="font-sans text-xs font-bold text-zinc-400 cursor-not-allowed">Login Required</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PAGE: CANDIDATE DASHBOARD ==================== -->
+        <div id="page-dashboard" class="page-view">
+            <section class="pt-32 pb-20 border-b border-borderLight bg-surface relative overflow-hidden">
+                <div class="max-w-screen-2xl mx-auto px-6 lg:px-8 relative z-10">
+                    <div class="mask-reveal dashboard-el">
+                        <div class="font-mono text-[11px] font-bold text-accent uppercase tracking-[0.25em] mb-4">Secure Portal</div>
+                    </div>
+                    <div class="text-mask">
+                        <h1 class="font-sans font-extrabold text-4xl md:text-5xl tracking-tight text-textMain mb-6 db-title">Candidate Dashboard</h1>
+                    </div>
+                    <div class="mask-reveal dashboard-el">
+                        <p class="font-sans text-lg text-textMuted font-medium">Welcome back. Manage your active certifications and examination schedules below.</p>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 max-w-screen-2xl mx-auto px-6 lg:px-8 bg-base">
+                <h2 class="font-sans font-bold text-2xl text-textMain mb-8 dashboard-el">Active Credentials</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Dashboard Cert Card -->
+                    <div class="enterprise-card p-8 dashboard-el">
+                        <div class="flex justify-between items-start mb-6 border-b border-borderLight pb-6">
+                            <div>
+                                <div class="font-mono text-xs font-bold text-zinc-400 mb-1">CTIC-CSA</div>
+                                <h3 class="font-sans font-extrabold text-2xl text-textMain">Certified Security Analyst</h3>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 font-mono text-[10px] font-bold uppercase rounded-sm border border-green-200">Active</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-8 font-mono text-xs text-textMuted">
+                            <div><span class="block text-[10px] uppercase text-zinc-400 mb-1">Issue Date</span> Oct 12, 2024</div>
+                            <div><span class="block text-[10px] uppercase text-zinc-400 mb-1">Valid Until</span> Oct 12, 2027</div>
+                            <div class="col-span-2"><span class="block text-[10px] uppercase text-zinc-400 mb-1">Credential ID</span> CTIC-8A9F2B</div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button onclick="viewMyCertificate('Jane Doe', 'Certified Security Analyst (CTIC-CSA)', 'CTIC-8A9F2B')" class="flex-1 bg-textMain hover:bg-accent text-white py-3 font-sans font-bold text-sm transition-colors text-center shadow-premium">View Certificate</button>
+                            <button onclick="copyPublicLink('CTIC-8A9F2B')" class="flex-1 border border-borderLight hover:border-textMain text-textMain py-3 font-sans font-bold text-sm transition-colors text-center bg-white">Copy Public Link</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== PAGE: EXAM PORTAL (LIVE ENVIRONMENT) ==================== -->
+        <div id="page-exam" class="page-view bg-[#09090B] min-h-screen flex flex-col text-white relative overflow-hidden z-50">
+            <!-- Lock down background -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900 to-black pointer-events-none"></div>
+            
+            <!-- Secure Top Bar -->
+            <div class="border-b border-zinc-800 p-6 flex justify-between items-center bg-black relative z-10">
+                <div class="flex items-center gap-4">
+                    <span class="w-2.5 h-2.5 bg-accent rounded-full animate-pulse shadow-[0_0_10px_rgba(220,38,38,0.8)]"></span>
+                    <span class="font-mono text-xs text-accent tracking-widest uppercase font-bold">CTIC SECURE ENVIRONMENT</span>
+                </div>
+                <div class="font-mono text-2xl text-white font-bold tracking-wider" id="exam-timer">45:00</div>
+            </div>
+            
+            <!-- Exam Content Area -->
+            <div class="flex-1 max-w-4xl w-full mx-auto p-6 flex flex-col justify-center relative z-10" id="exam-content-area">
+                
+                <!-- 1. Intro Screen -->
+                <div id="exam-intro" class="text-center">
+                    <div class="w-16 h-16 border border-zinc-700 bg-zinc-900 flex items-center justify-center mx-auto mb-8 text-accent">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                    <h2 class="font-sans font-extrabold text-4xl mb-4 text-white">CTIC Capability Assessment</h2>
+                    <p class="text-zinc-400 mb-8 max-w-lg mx-auto leading-relaxed">You are entering a secure examination session. Do not navigate away from this screen or your session will be invalidated.</p>
+
+                    <button onclick="startExam()" class="bg-accent hover:bg-accentHover text-white px-10 py-4 font-sans font-bold transition-colors uppercase tracking-wider text-sm shadow-red-glow">Acknowledge & Begin</button>
+                    <button onclick="navigate('home')" class="block mx-auto mt-6 text-zinc-500 hover:text-white font-sans text-xs underline">Cancel and return to dashboard</button>
+                </div>
+                
+                <!-- 2. QA Screen -->
+                <div id="exam-qa" class="hidden w-full">
+                    <div class="flex justify-between items-center mb-8 border-b border-zinc-800 pb-4">
+                        <div class="font-mono text-xs text-zinc-500 tracking-widest uppercase">Question <span id="q-current" class="text-white">1</span> of <span id="q-total">5</span></div>
+                        <div class="font-mono text-[10px] text-accent uppercase bg-red-950/30 px-2 py-1 border border-red-900/50">Recording Active</div>
+                    </div>
+                    
+                    <h3 class="font-sans font-bold text-2xl md:text-3xl mb-10 leading-relaxed text-white" id="q-text">Question text here?</h3>
+                    
+                    <div class="space-y-4" id="q-options">
+                        <!-- Options injected via JS -->
+                    </div>
+                    
+                    <div class="mt-12 flex justify-between items-center pt-8 border-t border-zinc-800">
+                        <span class="font-mono text-[10px] text-zinc-600">ID: <span id="q-id-hash"></span></span>
+                        <button onclick="nextQuestion()" class="bg-white text-black hover:bg-zinc-200 px-10 py-3 font-sans font-bold transition-colors disabled:opacity-20 disabled:cursor-not-allowed flex items-center gap-2" id="btn-next" disabled>
+                            Proceed
+                            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Results Screen -->
+                <div id="exam-results" class="hidden text-center">
+                    <div class="w-32 h-32 rounded-full border-4 border-zinc-800 flex items-center justify-center mx-auto mb-8 relative" id="res-circle">
+                        <div class="absolute inset-0 bg-accent opacity-10 rounded-full" id="res-glow"></div>
+                        <span class="font-sans font-extrabold text-4xl text-white" id="res-score">0%</span>
+                    </div>
+                    <div class="font-mono text-xs tracking-widest uppercase mb-2 text-zinc-500">Assessment Status</div>
+                    <h2 class="font-sans font-extrabold text-4xl mb-4" id="res-status">Exam Complete</h2>
+                    <p class="text-zinc-400 mb-10 max-w-md mx-auto" id="res-message">Your results have been securely recorded to the cryptographic ledger.</p>
+                    
+                    <div id="cert-success-actions" class="hidden flex-col items-center gap-4 mb-10">
+                        <button onclick="viewCertificate()" class="bg-accent hover:bg-accentHover text-white px-8 py-4 font-sans font-bold transition-colors uppercase tracking-wider text-xs shadow-red-glow">
+                            View Official Certificate
+                        </button>
+                        <div class="flex items-center gap-2 mt-4 max-w-md w-full">
+                            <input type="text" id="cert-link-input" class="w-full bg-zinc-900 border border-zinc-700 text-zinc-400 p-3 font-mono text-[10px] outline-none" readonly>
+                            <button onclick="copyCertLink()" id="btn-copy-cert" class="bg-zinc-800 hover:bg-zinc-700 text-white px-4 py-3 font-sans text-xs font-bold transition-colors">Copy</button>
+                        </div>
+                    </div>
+
+                    <button onclick="navigate('home')" class="text-zinc-500 hover:text-white font-sans font-bold transition-colors uppercase tracking-wider text-xs underline">Return to Main Platform</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PAGE: DIGITAL CERTIFICATE ==================== -->
+        <div id="page-certificate" class="page-view bg-zinc-100 fixed inset-0 z-[100] overflow-hidden">
+            <div class="absolute top-6 left-6 z-20" id="cert-back-btn">
+                <button onclick="navigate('dashboard')" class="font-sans text-xs font-bold text-textMain hover:text-accent transition-colors flex items-center gap-2 bg-white px-4 py-2 shadow-sm border border-borderLight">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                    Return to Dashboard
+                </button>
+            </div>
+
+            <!-- Absolute full-screen centered wrapper -->
+            <div class="w-full h-full flex items-center justify-center p-4 md:p-12">
+                <!-- Authentic Digital Certificate Design - True Landscape -->
+                <div class="w-full max-w-5xl bg-white shadow-2xl relative overflow-hidden cert-border fade-up flex flex-col justify-center items-center p-8 md:p-16 text-center" style="aspect-ratio: 1.414 / 1; max-height: 85vh;">
+                    
+                    <!-- Corner accents -->
+                    <div class="absolute top-4 left-4 w-12 h-12 md:top-6 md:left-6 md:w-16 md:h-16 border-t-2 border-l-2 border-zinc-800"></div>
+                    <div class="absolute top-4 right-4 w-12 h-12 md:top-6 md:right-6 md:w-16 md:h-16 border-t-2 border-r-2 border-zinc-800"></div>
+                    <div class="absolute bottom-4 left-4 w-12 h-12 md:bottom-6 md:left-6 md:w-16 md:h-16 border-b-2 border-l-2 border-zinc-800"></div>
+                    <div class="absolute bottom-4 right-4 w-12 h-12 md:bottom-6 md:right-6 md:w-16 md:h-16 border-b-2 border-r-2 border-zinc-800"></div>
+
+                    <!-- Header -->
+                    <div class="flex justify-center items-center gap-4 mb-4 md:mb-6">
+                        <svg class="w-8 h-8 md:w-12 md:h-12 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    
+                    <h1 class="font-serif text-2xl md:text-4xl lg:text-5xl text-textMain mb-2 md:mb-4 tracking-[0.15em] uppercase">Cyber Threat Intelligence Council</h1>
+                    <div class="w-24 md:w-32 h-1 bg-accent mx-auto mb-6 md:mb-8"></div>
+
+                    <!-- Recipient -->
+                    <p class="font-serif text-sm md:text-lg lg:text-xl text-textMuted italic mb-4 md:mb-6">This is to certify that</p>
+                    
+                    <h2 class="font-serif text-3xl md:text-5xl lg:text-7xl text-textMain font-bold mb-4 md:mb-6 underline decoration-zinc-200 underline-offset-[8px] md:underline-offset-[12px]" id="cert-display-name">Candidate Name</h2>
+                    
+                    <p class="font-sans text-xs md:text-sm lg:text-base text-zinc-600 uppercase tracking-widest mb-3 md:mb-4 px-4">has successfully met all requirements and passed the examination for</p>
+                    
+                    <!-- Certification Title -->
+                    <h3 class="font-sans font-extrabold text-xl md:text-3xl lg:text-4xl text-accent uppercase tracking-tight mb-8 md:mb-12" id="cert-display-module">Certified Security Analyst</h3>
+
+                    <!-- Signatures & Details -->
+                    <div class="flex flex-row justify-between items-end pt-6 md:pt-8 mt-auto gap-4 md:gap-8 text-left border-t border-zinc-300 w-full px-2 md:px-8">
+                        <div class="w-1/3">
+                            <div class="border-b border-zinc-400 pb-1 md:pb-2 mb-1 md:mb-2 font-serif text-sm md:text-xl text-textMain text-center signature-font italic">Dr. A. Sterling</div>
+                            <div class="font-mono text-[7px] md:text-[10px] text-zinc-500 uppercase tracking-widest text-center">Chairman of the Board</div>
+                        </div>
+                        <div class="w-1/3 text-center font-mono text-[7px] md:text-xs text-zinc-600 space-y-1 md:space-y-2 bg-zinc-50 p-2 md:p-4 rounded border border-zinc-200">
+                            <div>ISSUE DATE: <br class="block md:hidden"><span class="font-bold text-textMain" id="cert-display-date">Oct 24, 2026</span></div>
+                            <div>CREDENTIAL ID: <br class="block md:hidden"><span class="font-bold text-textMain" id="cert-display-id">CTIC-000000</span></div>
+                        </div>
+                        <div class="w-1/3">
+                            <div class="border-b border-zinc-400 pb-1 md:pb-2 mb-1 md:mb-2 font-serif text-sm md:text-xl text-textMain text-center signature-font italic">E. Blackwood</div>
+                            <div class="font-mono text-[7px] md:text-[10px] text-zinc-500 uppercase tracking-widest text-center">Dir. of Certification</div>
+                        </div>
+                    </div>
+
+                    <!-- Gold/Red Seal -->
+                    <div class="cert-seal hidden md:flex">
+                        <span>CTIC<br>VERIFIED<br>SECURE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Master Footer -->
+    <footer class="bg-darkAnchor border-t-4 border-accent py-16 text-white relative z-20">
+        <div class="max-w-screen-2xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12 border-b border-zinc-800 pb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-8 bg-white flex items-center justify-center">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#DC2626" stroke-width="2" stroke-linejoin="round"/>
+                                <path d="M2 17L12 22L22 17" stroke="#DC2626" stroke-width="2" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="font-sans font-bold text-xl tracking-tight uppercase text-white">CTIC<span class="text-accent">.</span></span>
+                    </div>
+                    <p class="font-sans text-sm text-zinc-400 max-w-md leading-relaxed">The premier credentialing body establishing the global benchmark for intelligence analysts, forensic experts, and security operators.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-white uppercase tracking-widest mb-6">Ecosystem</h4>
+                    <ul class="space-y-4 font-sans text-sm font-medium text-zinc-400">
+                        <li><button onclick="navigate('certifications')" class="hover:text-white transition-colors">Certifications</button></li>
+                        <li><button onclick="navigate('intelligence')" class="hover:text-white transition-colors">Resource Hub</button></li>
+                        <li><button onclick="navigate('pillars')" class="hover:text-white transition-colors">Our Pillars</button></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-mono text-xs font-bold text-white uppercase tracking-widest mb-6">Governance</h4>
+                    <ul class="space-y-4 font-sans text-sm font-medium text-zinc-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Code of Ethics</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Exam Regulations</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="mailto:contact@ctic.org" class="text-accent hover:text-white transition-colors">contact@ctic.org</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 font-mono text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
+                <div>&copy; 2026 CYBER THREAT INTELLIGENCE COUNCIL. ALL RIGHTS RESERVED.</div>
+                <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span> INFRASTRUCTURE SECURE.</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let lenis;
+        let generatedCertId = "";
+        let candidateName = "";
+        let examModule = "";
+
+        // Smooth Scroll
+        function initLenis() {
+            if (typeof Lenis === 'undefined') return;
+            lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), direction: 'vertical', smooth: true });
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0, 0);
+        }
+
+        // --- Promo Popup System ---
+        setTimeout(() => {
+            const promo = document.getElementById('promo-popup');
+            if(promo) {
+                promo.style.display = 'block';
+                if(typeof gsap !== 'undefined') gsap.to(promo, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" });
+            }
+        }, 3000);
+
+        function closePromo() {
+            if(typeof gsap !== 'undefined') {
+                gsap.to('#promo-popup', { y: 50, opacity: 0, duration: 0.4, onComplete: () => {
+                    document.getElementById('promo-popup').style.display = 'none';
+                }});
+            } else {
+                document.getElementById('promo-popup').style.display = 'none';
+            }
+        }
+
+        function copyPromo() {
+            const code = document.getElementById('promo-code').innerText;
+            const tempInput = document.createElement('input');
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            const btn = document.getElementById('promo-copy-btn');
+            const originalText = btn.innerText;
+            btn.innerText = 'Copied!';
+            btn.classList.add('bg-green-600');
+            btn.classList.remove('bg-accent', 'hover:bg-accentHover');
+            
+            setTimeout(() => {
+                btn.innerText = originalText;
+                btn.classList.remove('bg-green-600');
+                btn.classList.add('bg-accent', 'hover:bg-accentHover');
+            }, 2000);
+        }
+
+        // --- Modal System ---
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            const container = modal.querySelector('.modal-container');
+            modal.style.display = 'flex';
+            if(typeof gsap !== 'undefined') {
+                gsap.to(modal, { opacity: 1, duration: 0.3, ease: "power2.out" });
+                gsap.to(container, { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.2)", delay: 0.1 });
+            } else {
+                modal.style.opacity = 1;
+                container.style.transform = "translateY(0) scale(1)";
+                container.style.opacity = 1;
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            const container = modal.querySelector('.modal-container');
+            if(typeof gsap !== 'undefined') {
+                gsap.to(container, { y: 20, scale: 0.95, opacity: 0, duration: 0.3, ease: "power2.in" });
+                gsap.to(modal, { opacity: 0, duration: 0.3, ease: "power2.in", delay: 0.1, onComplete: () => { modal.style.display = 'none'; }});
+            } else {
+                modal.style.display = 'none';
+            }
+        }
+
+        // --- EXAM PORTAL LOGIC ---
+        const examQuestions = [
+            { q: "What is the primary objective of Cyber Threat Intelligence (CTI)?", opts: ["To automatically patch software vulnerabilities", "To understand adversary capabilities, motives, and infrastructure", "To conduct physical forensic analysis on hardware", "To encrypt organizational databases"], ans: 1 },
+            { q: "In the Diamond Model of Intrusion Analysis, what are the four core features?", opts: ["Adversary, Capability, Infrastructure, Victim", "Reconnaissance, Weaponization, Delivery, Exploitation", "Identify, Protect, Detect, Respond", "Source, Destination, Payload, Signature"], ans: 0 },
+            { q: "Which framework is established globally as the standard for mapping adversary tactics and techniques?", opts: ["OWASP Top 10", "NIST Cybersecurity Framework", "MITRE ATT&CK", "ISO/IEC 27001"], ans: 2 },
+            { q: "What does an Indicator of Compromise (IoC) typically represent in an investigation?", opts: ["A secure network baseline state", "A forensic artifact indicating a potential intrusion", "A vendor-released firewall patch", "A zero-trust policy configuration"], ans: 1 },
+            { q: "Which of the following is considered a proactive defense measure rather than reactive?", opts: ["Post-incident Digital Forensics", "Disaster Recovery Execution", "Threat Hunting Operations", "Reviewing logs after an automated alert"], ans: 2 }
+        ];
+
+        let currentQIndex = 0;
+        let userScore = 0;
+        let selectedOption = null;
+        let timerInterval;
+
+        function startExam() {
+            const fnameInput = document.getElementById('reg-fname') ? document.getElementById('reg-fname').value : "Jane";
+            const lnameInput = document.getElementById('reg-lname') ? document.getElementById('reg-lname').value : "Doe";
+            
+            candidateName = fnameInput + ' ' + lnameInput;
+            examModule = document.getElementById('reg-exam-select') ? document.getElementById('reg-exam-select').value : "Certified Security Analyst (CTIC-CSA)";
+
+            document.getElementById('exam-intro').style.display = 'none';
+            document.getElementById('exam-results').style.display = 'none';
+            document.getElementById('exam-qa').style.display = 'block';
+            
+            document.getElementById('main-nav').style.display = 'none';
+            
+            currentQIndex = 0;
+            userScore = 0;
+            document.getElementById('q-total').innerText = examQuestions.length;
+            
+            let timeLeft = 45 * 60;
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                let m = Math.floor(timeLeft / 60);
+                let s = timeLeft % 60;
+                document.getElementById('exam-timer').innerText = `${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+                if(timeLeft <= 0) { clearInterval(timerInterval); finishExam(); }
+                timeLeft--;
+            }, 1000);
+
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            selectedOption = null;
+            document.getElementById('btn-next').disabled = true;
+            document.getElementById('q-current').innerText = currentQIndex + 1;
+            document.getElementById('q-text').innerText = examQuestions[currentQIndex].q;
+            document.getElementById('q-id-hash').innerText = Math.random().toString(36).substring(2, 10).toUpperCase();
+            
+            const optsContainer = document.getElementById('q-options');
+            optsContainer.innerHTML = '';
+            
+            examQuestions[currentQIndex].opts.forEach((opt, index) => {
+                const div = document.createElement('div');
+                div.className = 'border border-zinc-800 p-5 bg-zinc-950/50 hover:bg-zinc-900 cursor-pointer transition-colors flex items-start gap-4 opt-item';
+                div.onclick = () => selectExamOption(index, div);
+                div.innerHTML = `
+                    <div class="w-5 h-5 rounded-full border border-zinc-600 flex items-center justify-center flex-shrink-0 mt-0.5 opt-radio">
+                        <div class="w-2.5 h-2.5 rounded-full bg-transparent transition-colors opt-fill"></div>
+                    </div>
+                    <span class="font-sans text-sm md:text-base text-zinc-300 opt-text">${opt}</span>
+                `;
+                optsContainer.appendChild(div);
+            });
+
+            document.getElementById('btn-next').innerHTML = currentQIndex === examQuestions.length - 1 ? 
+                'Submit Assessment <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>' : 
+                'Proceed <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg>';
+                
+            if(typeof gsap !== 'undefined') gsap.fromTo('#exam-qa', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.5});
+        }
+
+        function selectExamOption(index, el) {
+            selectedOption = index;
+            document.getElementById('btn-next').disabled = false;
+            
+            document.querySelectorAll('.opt-item').forEach(item => {
+                item.classList.remove('border-accent', 'bg-red-950/20');
+                item.classList.add('border-zinc-800');
+                item.querySelector('.opt-fill').classList.remove('bg-accent');
+                item.querySelector('.opt-text').classList.replace('text-white', 'text-zinc-300');
+            });
+            
+            el.classList.remove('border-zinc-800');
+            el.classList.add('border-accent', 'bg-red-950/20');
+            el.querySelector('.opt-fill').classList.add('bg-accent');
+            el.querySelector('.opt-text').classList.replace('text-zinc-300', 'text-white');
+        }
+
+        function nextQuestion() {
+            if(selectedOption === examQuestions[currentQIndex].ans) userScore++;
+            
+            currentQIndex++;
+            if(currentQIndex < examQuestions.length) {
+                if(typeof gsap !== 'undefined') {
+                    gsap.to('#exam-qa', {opacity: 0, x: -20, duration: 0.2, onComplete: () => {
+                        gsap.set('#exam-qa', {x: 20});
+                        loadQuestion();
+                    }});
+                } else {
+                    loadQuestion();
+                }
+            } else {
+                finishExam();
+            }
+        }
+
+        function finishExam() {
+            clearInterval(timerInterval);
+            document.getElementById('exam-qa').style.display = 'none';
+            document.getElementById('exam-results').style.display = 'block';
+            
+            const percent = Math.round((userScore / examQuestions.length) * 100);
+            
+            if(typeof gsap !== 'undefined') {
+                gsap.to({val: 0}, {
+                    val: percent, duration: 2, ease: "power3.out",
+                    onUpdate: function() { document.getElementById('res-score').innerText = Math.floor(this.targets()[0].val) + '%'; }
+                });
+            } else {
+                document.getElementById('res-score').innerText = percent + '%';
+            }
+            
+            const statusEl = document.getElementById('res-status');
+            const msgEl = document.getElementById('res-message');
+            const circleEl = document.getElementById('res-circle');
+            const glowEl = document.getElementById('res-glow');
+            const actionsEl = document.getElementById('cert-success-actions');
+            
+            if(percent >= 80) {
+                statusEl.innerText = 'STATUS: PASS';
+                statusEl.className = 'font-mono text-3xl mb-4 text-green-500 font-bold tracking-widest';
+                msgEl.innerText = 'Excellent. You have demonstrated the necessary competency to hold a CTIC designation. Your cryptographic badge has been issued.';
+                circleEl.className = 'w-32 h-32 rounded-full border-4 border-green-500 flex items-center justify-center mx-auto mb-8 relative shadow-[0_0_30px_rgba(34,197,94,0.2)]';
+                glowEl.className = 'absolute inset-0 bg-green-500 opacity-10 rounded-full';
+                
+                generatedCertId = "CTIC-" + Math.random().toString(36).substring(2, 8).toUpperCase();
+                const shareableLink = window.location.origin + window.location.pathname + "?cert=" + generatedCertId + "&name=" + encodeURIComponent(candidateName) + "&mod=" + encodeURIComponent(examModule);
+                document.getElementById('cert-link-input').value = shareableLink;
+                actionsEl.classList.remove('hidden');
+                actionsEl.classList.add('flex');
+
+            } else {
+                statusEl.innerText = 'STATUS: FAIL';
+                statusEl.className = 'font-mono text-3xl mb-4 text-accent font-bold tracking-widest';
+                msgEl.innerText = 'Your score did not meet the required 80% threshold. Please review the specific domain blueprints and schedule a re-test.';
+                circleEl.className = 'w-32 h-32 rounded-full border-4 border-accent flex items-center justify-center mx-auto mb-8 relative shadow-[0_0_30px_rgba(220,38,38,0.2)]';
+                glowEl.className = 'absolute inset-0 bg-accent opacity-10 rounded-full';
+                actionsEl.classList.add('hidden');
+                actionsEl.classList.remove('flex');
+            }
+            
+            if(typeof gsap !== 'undefined') gsap.fromTo('#exam-results', {opacity: 0, scale: 0.95}, {opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.2)"});
+        }
+
+        function copyCertLink() {
+            const input = document.getElementById('cert-link-input');
+            input.select();
+            document.execCommand('copy');
+            const btn = document.getElementById('btn-copy-cert');
+            btn.innerText = "Copied!";
+            btn.classList.add('bg-green-600', 'hover:bg-green-700');
+            setTimeout(() => {
+                btn.innerText = "Copy";
+                btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+            }, 2000);
+        }
+
+        function viewCertificate() {
+            document.getElementById('cert-display-name').innerText = candidateName || "Verified Candidate";
+            document.getElementById('cert-display-module').innerText = examModule || "CTIC Certification";
+            document.getElementById('cert-display-id').innerText = generatedCertId || "CTIC-XXXXXX";
+            const today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            document.getElementById('cert-display-date').innerText = today;
+            
+            document.getElementById('cert-back-btn').innerHTML = `
+                <button onclick="navigate('dashboard')" class="font-sans text-xs font-bold text-textMain hover:text-accent transition-colors flex items-center gap-2 bg-white px-4 py-2 shadow-sm border border-borderLight">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                    Return to Dashboard
+                </button>
+            `;
+            
+            navigate('certificate');
+        }
+
+        function viewMyCertificate(name, module, id) {
+            candidateName = name;
+            examModule = module;
+            generatedCertId = id;
+            viewCertificate();
+        }
+
+        function copyPublicLink(id) {
+            const link = window.location.origin + window.location.pathname + "?cert=" + id + "&name=" + encodeURIComponent("Jane Doe") + "&mod=" + encodeURIComponent("Certified Security Analyst");
+            const tempInput = document.createElement('input');
+            tempInput.value = link;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert("Public Verification Link Copied: " + link);
+        }
+
+        // --- Elite Transition Engine ---
+        window.navigate = function(pageId) {
+            const currentActive = document.querySelector('.page-view.active');
+            const targetPage = document.getElementById('page-' + pageId);
+            if (currentActive === targetPage) return;
+
+            if(pageId === 'exam' || pageId === 'certificate') {
+                document.getElementById('main-nav').style.display = 'none';
+                document.querySelector('footer').style.display = 'none';
+            } else {
+                document.getElementById('main-nav').style.display = 'block';
+                document.querySelector('footer').style.display = 'block';
+            }
+
+            if(lenis) lenis.stop();
+            if(typeof ScrollTrigger !== 'undefined') ScrollTrigger.getAll().forEach(t => t.kill());
+            
+            if (typeof gsap === 'undefined') {
+                if(currentActive) currentActive.classList.remove('active');
+                targetPage.classList.add('active');
+                window.scrollTo(0,0);
+                return;
+            }
+
+            const tl = gsap.timeline();
+
+            tl.set('.transition-panel', { transformOrigin: 'bottom' })
+              .to('.panel-red', { scaleY: 1, duration: 0.5, ease: "power4.inOut" })
+              .to('.panel-dark', { scaleY: 1, duration: 0.5, ease: "power4.inOut" }, "-=0.3")
+              .to('.transition-logo', { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, "-=0.3")
+              .add(() => {
+                  if(currentActive) currentActive.classList.remove('active');
+                  targetPage.classList.add('active');
+                  window.scrollTo(0,0);
+                  if(lenis) lenis.scrollTo(0, {immediate: true});
+                  resetPageElements(targetPage);
+              })
+              .set('.transition-panel', { transformOrigin: 'top' })
+              .to('.transition-logo', { opacity: 0, scale: 0.95, duration: 0.2, ease: "power2.in" })
+              .to('.panel-dark', { scaleY: 0, duration: 0.5, ease: "power4.inOut" })
+              .to('.panel-red', { scaleY: 0, duration: 0.5, ease: "power4.inOut" }, "-=0.3")
+              .add(() => {
+                  if(lenis) lenis.start();
+                  if(pageId === 'home') initHomeAnimations();
+                  if(pageId === 'certifications') initCertAnimations();
+                  if(pageId === 'pillars') initPillarsAnimations();
+                  if(pageId === 'intelligence') initIntelAnimations();
+                  if(pageId === 'dashboard') {
+                      gsap.fromTo('.dashboard-el', {opacity: 0, y: 20}, {opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power3.out'});
+                      animateMaskedText('.db-title', 0);
+                  }
+                  if(pageId === 'certificate') {
+                      gsap.fromTo('#page-certificate .fade-up', {opacity:0, y:40, scale:0.95}, {opacity:1, y:0, scale:1, duration: 1, ease: "power4.out"});
+                  }
+                  if(pageId === 'exam') {
+                      document.getElementById('exam-intro').style.display = 'block';
+                      document.getElementById('exam-qa').style.display = 'none';
+                      document.getElementById('exam-results').style.display = 'none';
+                      gsap.fromTo('#exam-intro', {opacity:0, y:20}, {opacity:1, y:0, duration: 0.8});
+                  }
+              });
+        };
+
+        function resetPageElements(page) {
+            if(typeof gsap === 'undefined') return;
+            const maskReveals = page.querySelectorAll('.mask-reveal');
+            gsap.set(maskReveals, { opacity: 0 });
+            
+            const words = page.querySelectorAll('.word');
+            if(words.length) gsap.set(words, { y: '115%' });
+
+            if(page.id === 'page-home') {
+                gsap.set('.hero-graphic', { scale: 0.9, opacity: 0 });
+                gsap.set('.line-expand', { scaleX: 0 });
+                gsap.set('.data-stat', { opacity: 0, y: 20 });
+                gsap.set('.feat-card', { opacity: 0, y: 30 });
+                gsap.set('.btn-reveal', { opacity: 0 });
+                gsap.set('#page-home .img-reveal', { clipPath: "inset(100% 0 0 0)" });
+                gsap.set('#page-home .img-reveal-bg', { clipPath: "inset(100% 0 0 0)" });
+            }
+            if(page.id === 'page-certifications') {
+                gsap.set('.catalog-card', { opacity: 0, y: 30 });
+                gsap.set('#page-certifications .img-reveal', { clipPath: "inset(100% 0 0 0)" });
+            }
+            if(page.id === 'page-intelligence') gsap.set('.res-card', { opacity: 0, y: 20 });
+            if(page.id === 'page-pillars') { gsap.set('.pil-card', { opacity: 0, y: 20 }); }
+        }
+
+        function prepTypography() {
+            if (typeof SplitType === 'undefined') return;
+            const targets = document.querySelectorAll('.text-mask');
+            targets.forEach(target => { new SplitType(target, { types: 'lines, words', lineClass: 'split-line' }); });
+        }
+
+        function runPreloader() {
+            if (typeof gsap === 'undefined') return;
+            prepTypography();
+            const tl = gsap.timeline();
+            
+            tl.from('#preloader-logo', { opacity: 0, scale: 0.95, duration: 1, ease: 'power3.out' })
+              .to('#preloader-logo', { scale: 1.05, duration: 1.5, ease: 'none' }) 
+              .to('#preloader', { yPercent: -100, duration: 0.8, ease: "power4.inOut" })
+              .set('#preloader', { display: 'none' })
+              .add(() => { 
+                  gsap.to('#main-nav', { y: 0, duration: 1, ease: "power4.out" }); 
+                  initHomeAnimations(); 
+              }, "-=0.4");
+        }
+
+        function animateMaskedText(target, delay = 0) {
+            if (typeof gsap === 'undefined') return;
+            let elements;
+            if (typeof target === 'string') elements = document.querySelectorAll(`${target} .word`);
+            else if (target && target.querySelectorAll) elements = target.querySelectorAll('.word');
+            else return;
+            
+            if(!elements || elements.length === 0) return;
+            gsap.to(elements, { y: '0%', duration: 1, stagger: 0.02, ease: "expo.out", delay: delay });
+        }
+
+        // --- Specific Page Inits ---
+        function initHomeAnimations() {
+            if (typeof gsap === 'undefined') return;
+            const tl = gsap.timeline();
+            tl.to('.hero-sub', { opacity: 1, duration: 0.1 })
+              .to('.line-expand', { scaleX: 1, duration: 0.8, ease: "expo.out" })
+              .call(() => animateMaskedText('#page-home .hero-title', 0), null, "-=0.6")
+              .to('.hero-desc', { opacity: 1, duration: 1, ease: "power2.out" }, "-=0.2")
+              .to('.hero-btns', { opacity: 1, duration: 0.5 }, "-=0.5")
+              .to('#page-home .img-reveal-bg', { clipPath: "inset(0% 0 0 0)", duration: 1.5, ease: "power4.inOut" }, "-=0.8")
+              .to('#page-home .img-reveal', { clipPath: "inset(0% 0 0 0)", duration: 1.5, ease: "power4.inOut" }, "-=1.3")
+              .to('.hero-graphic', { scale: 1, opacity: 1, duration: 2, ease: "power4.out" }, "-=1");
+
+            gsap.to('.data-stat', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: '.data-stat', start: "top 90%" }});
+            
+            gsap.to('.feat-card', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "expo.out", scrollTrigger: { trigger: '.framework-header', start: "top 70%" },
+                onStart: () => { animateMaskedText('.framework-header'); }
+            });
+            
+            gsap.utils.toArray('.feat-card').forEach(card => {
+                ScrollTrigger.create({ trigger: card, start: "top 80%", onEnter: () => { animateMaskedText(card); gsap.to(card.querySelectorAll('.card-desc'), { opacity: 1, duration: 1, delay: 0.4 }); }});
+            });
+            
+            gsap.utils.toArray('#page-home .img-reveal:not(:first-child)').forEach(img => {
+                 gsap.to(img, { clipPath: "inset(0% 0 0 0)", duration: 1.5, ease: "power4.inOut", scrollTrigger: { trigger: img, start: "top 75%" } });
+            });
+            
+            gsap.utils.toArray('#page-home .section-title').forEach(title => {
+                 ScrollTrigger.create({ trigger: title, start: "top 80%", onEnter: () => animateMaskedText(title.parentNode) });
+            });
+        }
+
+        function initCertAnimations() {
+            if (typeof gsap === 'undefined') return;
+            const tl = gsap.timeline();
+            tl.to('.pg-header', { opacity: 1, duration: 0.1 }).call(() => animateMaskedText('#page-certifications .pg-title', 0.2)).to('.pg-desc', { opacity: 1, duration: 1 }, "-=0.2");
+            gsap.to('.catalog-card', { opacity: 1, y: 0, duration: 1, stagger: 0.15, ease: "expo.out", scrollTrigger: { trigger: '.catalog-card', start: "top 85%" }});
+        }
+
+        function initIntelAnimations() {
+            if (typeof gsap === 'undefined') return;
+            const tl = gsap.timeline();
+            tl.to('.res-header-el', { opacity: 1, duration: 0.1 }).call(() => animateMaskedText('#page-intelligence .res-title', 0.2));
+            gsap.to('.res-card', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: '#page-intelligence', start: "top 50%" }});
+        }
+
+        function initPillarsAnimations() {
+            if (typeof gsap === 'undefined') return;
+            animateMaskedText('#page-pillars .pil-title', 0.1);
+            gsap.to('.pil-desc', { opacity: 1, duration: 1, delay: 0.3 });
+            gsap.to('.pil-card', { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "expo.out", scrollTrigger: { trigger: '#page-pillars .pil-card', start: "top 85%" }});
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if(window.scrollY > 40) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)'; nav.style.boxShadow = '0 10px 40px -10px rgba(0,0,0,0.05)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.9)'; nav.style.boxShadow = 'none';
+            }
+        });
+
+        // URL Check for direct spectator certificate viewing
+        function checkUrlForCertificate() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const certId = urlParams.get('cert');
+            
+            if (certId) {
+                document.getElementById('preloader').style.display = 'none';
+                document.getElementById('main-nav').style.display = 'none';
+                document.querySelector('footer').style.display = 'none';
+                
+                const cName = urlParams.get('name') || 'Verified Practitioner';
+                const cMod = urlParams.get('mod') || 'CTIC Certification';
+                
+                document.getElementById('cert-display-name').innerText = cName;
+                document.getElementById('cert-display-module').innerText = cMod;
+                document.getElementById('cert-display-id').innerText = certId;
+                document.getElementById('cert-display-date').innerText = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                
+                document.getElementById('page-home').classList.remove('active');
+                document.getElementById('page-certificate').classList.add('active');
+                
+                if (typeof gsap !== 'undefined') {
+                    gsap.fromTo('#page-certificate .fade-up', {opacity:0, y:40, scale:0.95}, {opacity:1, y:0, scale:1, duration: 1.5, ease: "power4.out"});
+                } else {
+                    document.querySelector('#page-certificate .fade-up').style.opacity = 1;
+                    document.querySelector('#page-certificate .fade-up').style.transform = "translateY(0) scale(1)";
+                }
+                
+                document.getElementById('cert-back-btn').innerHTML = `
+                    <button onclick="window.location.href = window.location.pathname" class="font-sans text-xs font-bold text-textMain hover:text-accent transition-colors flex items-center gap-2 bg-white px-4 py-2 shadow-sm border border-borderLight">
+                        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path></svg>
+                        CTIC Homepage
+                    </button>
+                `;
+                
+                return true;
+            }
+            return false;
+        }
+
+        // Boot
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader && preloader.style.display !== 'none') {
+                    preloader.classList.add('preloader-hidden');
+                    document.getElementById('main-nav').style.transform = 'translateY(0)';
+                }
+            }, 3500);
+
+            try {
+                initLenis();
+                if(!checkUrlForCertificate()) {
+                    runPreloader();
+                }
+            } catch(e) {
+                console.error("Initialization error:", e);
+                document.getElementById('preloader').classList.add('preloader-hidden');
+                document.getElementById('main-nav').style.transform = 'translateY(0)';
+            }
+        });
+
+    </script>
+</body>
+</html>
